@@ -1,46 +1,40 @@
-import React from 'react'
+import React, { useState } from 'react'
 import NavBar from './NavBar'
 
 const Viewall = () => {
+    
+    const [data,changeData]=useState(
+        [
+                {"name":"kavya","admno":"112","rollno":"11"},
+                {"name":"sana","admno":"113","rollno":"12"},
+                {"name":"shilpa","admno":"114","rollno":"13"},
+
+         ]
+            
+    )
+
   return (
     <div>
         <NavBar/>
         <div className="container">
             <div className="row">
-                <div className="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
-                <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">title</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
-                </div>
+                {data.map(
+                    (value, index) => {
+                        return <div className="col col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 col-xxl-3">
+                        <div className="card">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQC2k_mRTtn4ZCuaCWY1crj3V_Of6VE3VmsOA&s" className="card-img-top" alt="..."/>
+                            <div className="card-body">
+                                <h5 className="card-title">Name:{value.name}</h5>
+                                <p className="card-text">Adm No:{value.admno}</p>
+                                <p className="card-text">Roll No:{value.rollno}</p>
+                                <a href="#" className="btn btn-primary">biodata</a>
+                            </div>
+                        </div>
+                    </div>   
+                    }
+                )} 
             </div>
         </div>
-        
     </div>
   )
 }
